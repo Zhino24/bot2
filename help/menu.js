@@ -245,6 +245,7 @@ const menuGrup = (prefix, tanggal, jam) => {
 ├╼ *${prefix}Staff*
 ├╼ *${prefix}Online*
 ├╼ *${prefix}Link* 
+├╼ *${prefix}Perfil* 
 ├╼ *${prefix}promover* _(@User)_
 ├╼ *${prefix}degradar* _(@User)_
 ├╼ *${prefix}seticon* _(Foto)_
