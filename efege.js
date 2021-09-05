@@ -112,7 +112,7 @@ const ownerNumber = [
 const Vkey = 'apivinz'
 const Xinz = 'XinzBot'
 const Pkode = 'pais'
-const lolkey = '293a9e8195c28ba24abd53e4' //está api puede cambiar, si tiene uno reemplacelo
+const lolkey = '51762aa98877b6dc21112b1a' //está api puede cambiar, si tiene uno reemplace 
 
 //-- Hora y fecha
 function kyun(seconds){
@@ -1691,17 +1691,15 @@ await Fg.sendMessage(from, options, text)
 break
 
 //Hidetag 
-case 'hidetag':
-         reply(`❎ Intenta de nuevo con:\n\n*${prefix}Here*`)
-         break
-         
+
 case 'here':
+case 'hidetag':
     if (!isGroup) return reply(group())
     if (!isGroupAdmins && !isOwner) return reply(admin())
     if (!isVerify) return reply(userB(prefix))
   if (isBanned) return reply(banf())
 
-    teks = body.slice(6)
+    teks = value
     gc = await Fg.groupMetadata(from);
     member = gc['participants']
     jids = [];
@@ -2622,7 +2620,34 @@ var imageBuffer = new Buffer.from(mantap, 'base64');
 
 Fg.sendMessage(from, imageBuffer, sticker, {quoted: mek})
 
-break 
+break
+
+case 'profile':
+					case 'perfil':
+					case 'itsme':
+					   if (!isVerify) return reply(userB(prefix))
+                       if (isBanned) return reply(banf())  
+					Fg.updatePresence(from, Presence.composing)
+
+				
+    				try {
+
+					ppimg = await Fg.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+
+					} catch {
+
+					ppimg = 'https://i.ibb.co/PZNv21q/Profile-FG98.jpg'
+					}
+					 profile = `╭────「 *PERFIL* 」
+│• *🔖 Nombre:* ${pushname}
+│• *🔗 Link:* wa.me/${sender.split("@")[0]}
+╰──────────────────`
+
+					buffer = await getBuffer(ppimg)
+
+					Fg.sendMessage(from, buffer, image, {quoted: mek, caption: profile})
+
+					break
 				
 				///-------------------------------------------
 				
