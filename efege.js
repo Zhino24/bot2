@@ -2107,7 +2107,33 @@ if (!isVerify) return reply(userB(prefix))
                         } catch (err) {
                         reply(mess.error.api) }
                         
-                   break 
+                   break
+                  
+                  case 'play2':
+                 if (!isVerify) return reply(userB(prefix))
+  if (isBanned) return reply(banf())
+if (args.length < 1) return reply(`✳️ *Ingresa el título de una canción*\n\n📌Ejemplo *${prefix + command}* Lil Peep broken smile`)
+reply(wait())
+
+                playfg = value
+                anu = await fetchJson(`https://api.zeks.me/api/ytplaymp3?q=${playfg}&apikey=hamilton49`)
+                if (anu.error) return reply(anu.error)
+                infomp3 = `
+*🎶Musica encontrada*
+
+‣ *📌Título* : ${anu.result.title}
+‣ *🔮 Fuente :* ${anu.result.source}
+‣ *⚖️Tamaño* : ${anu.result.size}
+‣ *🔗 Link* : ${anu.result.url_audio}
+
+_📤 Enviando, espere si el audio no aparece, descargue por el link_`
+
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                Fg.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                Fg.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                break
+               
 
 //YouTube Descargas
   case 'ytmp3':
